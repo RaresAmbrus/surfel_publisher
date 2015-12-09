@@ -20,25 +20,24 @@ catkin_package(
    INCLUDE_DIRS include
 )
 
-file (GLOB SRCS src/*.cpp)
 file (GLOB HDRS include/*.h)
-
 
 add_executable(surfel_publisher
                ${HDRS}
-               ${SRCS}
+               src/surfel_publisher.cpp
 )
 
+add_executable(surfel_exporter
+               ${HDRS}
+               src/surfel_exporter.cpp
+)
 
-
-target_link_libraries(surfel_publisher                      
+target_link_libraries(surfel_publisher
                       ${catkin_LIBRARIES}
                       ${PCL_LIBRARIES}
 )
 
-
-
-
-
-
-
+target_link_libraries(surfel_exporter
+                      ${catkin_LIBRARIES}
+                      ${PCL_LIBRARIES}
+)
